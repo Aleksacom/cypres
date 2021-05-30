@@ -1,0 +1,29 @@
+{
+  "navigation" : {
+    "loginbutton" : "a[href='/login']",
+    "createGalleryBtn" : "a[href='/create']",
+    "logoutButton" : ".ml-auto > :nth-child(3) > .nav-link",
+    "registerBtn" : "a[href='/register']"
+ 
+  },
+
+  "loginpage" : {
+    "email" : "input[id='email']",
+    "psw" : "input[id='password']",
+    "submitbtn" : "button[type='submit']", 
+    "badCred" :  "p[class='alert alert-danger']"
+   },
+
+   "registerPage" : {
+  
+    "firstName" : "input[id='first-name']",
+    "lastName" : "input[id='last-name']",
+    "email" : "input[id='email']",
+    "psw" : "input[id='password']",
+    "pswConfirm" : "input[id='password-confirmation']",
+    "aceptTerms" : "input[type='checkbox']",
+    "submiBtn" : "button[type='submit']", 
+    "validationError" : "p[class='alert alert-danger']" 
+   }
+
+}
