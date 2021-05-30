@@ -1,42 +1,33 @@
+const data = require('../fixtures/data.json')
+
 class CreateGallery {
-   
-
-
-    get title() {
+    get titleInput() {
         return cy.get('input[id="title"]')
     }
 
-    get description() {
+    get descriptionInput() {
         return cy.get('input[id="description"]')
     }
 
-    get imageUrl() {
-        return cy.get('input[placeholder="image url"]')
-    
-
+    get urlInput() {
+        return cy.get('input[type="url"]')
     }
 
-    get submmitButtom() {
+    get addNewImageBtn() {
+        return cy.get('form div:nth-of-type(3) > [type]')
+    }
+
+    get submitBtn() {
         return cy.get('form > button:nth-of-type(1)')
-
-        
     }
 
-    get createButton() {
-        return cy.get('a[href="/create"]')
-    }
-
-    clickcreateButton() {
-        this.createButton.click()
-    
-    }
-    
-    create(title, description, image_url) {
-        this.title.type(title)
-        this.description.type(description)
-        this.imageUrl.type(image_url)
-        //this.addImage.click({multiple : true})
-        this.submmitButtom.click()
+    createGalleryForm() {
+        this.titleInput.type(data.galleryData.title)
+        this.descriptionInput.type(data.galleryData.description)
+        this.urlInput.type(data.galleryData.url)
+        this.addNewImageBtn.click()
+        this.urlInput.eq(1).type(data.galleryData.url)
+        this.submitBtn.click()
     }
 }
 

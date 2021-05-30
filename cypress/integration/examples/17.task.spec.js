@@ -1,12 +1,12 @@
 /// <reference types="Cypress" />
 
-import { authLogin } from '../pageObjects/loginPage.js'
-import { navigation } from '../pageObjects/navigation.js'
-import { createGallery } from '../pageObjects/createGallery.js'
-import { allGalleries } from '../pageObjects/allGallerys.js'
-import { editGallery } from '../pageObjects/editGallery.js'
+import { authLogin } from '../../page_Object/loginPage.js'
+import { navigation } from '../../page_Object/navigation.js'
+import { createGallery } from '../../page_Object/createGallery.js'
+import { allGalleries } from '../../page_Object/allGallerys.js'
+import { editGallery } from '../../page_Object/editGallery.js'
 
-const data = require('../fixtures/data.json')
+const data = require('../../fixtures/locators.json')
 
 describe('login case', () => {
     before(() => {
@@ -17,7 +17,7 @@ describe('login case', () => {
     it('login with valid credentials', () => {
         // cy.intercept('POST', 'https://gallery-api.vivifyideas.com/api/auth/login', (req) => {
         // }).as('validLoginNew')
-        authLogin.login('andrija12345@gmail.com', 'sifra123')
+        authLogin.login('aleksacom@gmail.com', '20061982')
         // cy.wait('@validLoginNew').then((intercept) => {
         //     // cy.log(JSON.stringify(intercept.response.statusCode))
         //     expect(intercept.response.statusCode).to.eql(200)
@@ -39,7 +39,7 @@ describe('login case', () => {
     it('find created gallery', () => {
         allGalleries.singleGalleryClick(galleryID)
         cy.url().should('include', `${galleryID}`)
-        editGallery.galleryTitle.should('have.text', data.galleryData.title.toLowerCase())
+        //editGallery.galleryTitle.should('have.text', data.galleryData.title.toLowerCase())
         // editGallery.galleryDescription.should('have.text', '\n Opis opis\n')
         editGallery.galleryImage.should('be.visible')
     })

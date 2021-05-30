@@ -1,20 +1,22 @@
+/// <reference types="Cypress" />
 
-const locators = require('../fixtures/locators.json')
+const locators = require("../../fixtures/locators.json")
+const faker = require('faker');
 
 describe('create gallery tests', () => {
-    before(() => {
+    it('login with valid credentials', () => {
         cy.visit('')
-        cy.get(locators.navigation.loginButton).click()
+        cy.get(locators.navigation.loginbutton).click()
         cy.url().should('include', '/login') 
-        cy.get(locators.loginPage.title).should('have.text', 'Please login')
+        cy.get(locators.loginpage.title).should('have.text', 'Please login')
     })
 
     it('login with valid credentials', () => {
         cy.intercept('POST', 'https://gallery-api.vivifyideas.com/api/auth/login', (req) => {
         }).as('validLogin')
-        cy.get(locators.loginPage.email).type('andrija123@gmail.com')
-        cy.get(locators.loginPage.password).type('sifra123')
-        cy.get(locators.loginPage.submitBtn).click()
+        cy.get(locators.loginpage.email).type('aleksacom@gmail.com')
+        cy.get(locators.loginpage.psw).type('20061982')
+        cy.get(locators.loginpage.submitbtn).click()
         cy.wait('@validLogin').then((intercept) => {
             // cy.log(JSON.stringify(intercept.response.statusCode))
             expect(intercept.response.statusCode).to.eql(200)
@@ -22,8 +24,10 @@ describe('create gallery tests', () => {
     })
 
     it('delete', () => {
-        cy.get('a[href="/galleries/2049"]').click()
         cy.wait(2000)
+        cy.get('a[href="/my-galleries"]').click()
+        cy.wait(2000)
+        cy.get('a[href="/galleries/2007"]').click()
         cy.get('button[class="btn btn-custom"]').eq(0).click()
 
     })

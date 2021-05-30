@@ -11,7 +11,8 @@
     "email" : "input[id='email']",
     "psw" : "input[id='password']",
     "submitbtn" : "button[type='submit']", 
-    "badCred" :  "p[class='alert alert-danger']"
+    "badCred" :  "p[class='alert alert-danger']",
+    "title" : ".title-style"
    },
 
    "registerPage" : {

@@ -1,5 +1,5 @@
-const cred = require("../../fixtures/cred.json")
-const locator = require("../../fixtures/locators.json");
+
+const locators = require("../../fixtures/locators.json")
 import { authLogin} from '../../page_Object/loginPage.js'
 
 
@@ -34,7 +34,7 @@ describe('login', () => {
     
 it('visit gallery', () => {
     cy.visit('')
-    cy.get(locator.navigation.loginbutton).should('not.exist')
+    cy.get(locators.navigation.loginbutton).should('not.exist')
 
     })
 
@@ -43,14 +43,13 @@ it('visit gallery', () => {
 it.only('login with valid credentials', () => {
     cy.intercept('POST', 'https://gallery-api.vivifyideas.com/api/auth/login', (req) => {
     }).as('validLogin')
-    cy.get(locators.loginPage.email).type('andrija123@gmail.com')
-    cy.get(locators.loginPage.password).type('sifra123')
-    cy.get(locators.loginPage.submitBtn).click()
+    cy.get(locators.loginpage.email).type('andrija123@gmail.com')
+    cy.get(locators.loginpage.psw).type('sifra123')
+    cy.get(locators.loginpage.submitbtn).click()
     cy.wait('@validLogin').then((intercept) => {
         // cy.log(JSON.stringify(intercept.response.statusCode))
         expect(intercept.response.statusCode).to.eql(200)
     })    
 
 })
-
 })
